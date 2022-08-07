@@ -1,9 +1,10 @@
 #include "main.h"
 
 /**
- * _puts -> this is a function that puts
+ * _puts - this is a function that puts
  * @str: a parm to _puts function
- * Return - nothing
+ * print_string - printing a str
+ * Return: 0
  */
 int _puts(char *str)
 {
@@ -18,6 +19,11 @@ int _puts(char *str)
 	return (i);
 }
 
+/**
+ * print_string - printing a str
+ * @args: parameter
+ * Return: 0
+ */
 int print_string(va_list args)
 {
 	return (_puts(va_arg(args, char *)));
