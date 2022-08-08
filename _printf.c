@@ -1,50 +1,49 @@
 #include "main.h"
+#include <limits.h>
+#include <stdio.h>
 
 /**
- * _printf - prints numbers of args
- * @format: list of types of arg
- * Return: 0
+ * _printf - produces output according to a format
+ * @format: format string containing the characters
+ * Description: this function will call the get_print()
+ * determine which printing function to call depending on
+ * specifiers contained into fmt
+ * Return: length of the formatted output string
  */
 int _printf(const char *format, ...)
 {
-	int i = 0;
-	int counted = 0;
-	va_list args;
+	int (*pfunc)(va_list, flags_t *);
+	const char *p;
+	va_list arguments;
+	flags_t flags = {0, 0, 0};
 
-	va_start(args, format);
-	while (format[i])
+	register int count = 0;
+
+	va_start(arguments, format);
+	if (!format || (format[0] == '%' && !format[1]))
+		return (-1);
+	if (format[0] == '%' && format[1] == ' ' && !format[2])
+		return (-1);
+	for (p = format; *p; p++)
 	{
-		if (format[i] == '%')
+		if (*p == '%')
 		{
-			switch (format[i + 1])
+			p++;
+			if (*p == '%')
 			{
-				case 'c':
-					counted += print_char(args);
-					i += 2;
-					break;
-				case '%':
-					_putchar('%');
-					counted++;
-					i += 2;
-					break;
-				case 's':
-					counted += print_string(args);
-					i += 2;
-					break;
-				default:
-					_putchar(format[i]);
-					_putchar(format[i + 1]);
-					i += 2;
+				count += _putchar('%');
+				continue;
 			}
-		}
-
-		if (format[i])
-		{
-			_putchar(format[i]);
-			counted++;
-		}
-		i++;
+			while (get_flag(*p, &flags))
+				p++;
+			pfunc = get_print(*p);
+			count += (pfunc)
+				? pfunc(arguments, &flags)
+				: _printf("%%%c", *p);
+		} else
+			count += _putchar(*p);
 	}
-	va_end(args);
-	return (counted);
+	_putchar(-1);
+	va_end(arguments);
+	return (count);
 }
