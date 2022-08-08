@@ -1,10 +1,9 @@
 #include "main.h"
 
 /**
- * print_all - prints numbers of args
+ * _printf - prints numbers of args
  * @format: list of types of arg
- * @number: number of args
- * Return: the number of character printed
+ * Return: 0
  */
 int _printf(const char *format, ...)
 {
@@ -44,10 +43,8 @@ int _printf(const char *format, ...)
 			_putchar(format[i]);
 			counted++;
 		}
-
 		i++;
 	}
 	va_end(args);
-
 	return (counted);
 }
