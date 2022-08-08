@@ -1,12 +1,11 @@
-et paste
-i#include "main.h"
+#include "main.h"
 /**
  * print_bigS - Non printable characters
  * (0 < ASCII value < 32 or >= 127) are
  * printed this way: \x, followed by the ASCII code
  * value in hexadecimal (Upper - always 2 characters)
  * @l: va_list arguments from _printf
- * @f: pointer to the struct flags that determines
+ * @f: pointer to the struct flags that determin
  * if a flag is passed to _printf
  * Return: number of char printed
  */
@@ -38,7 +37,7 @@ int print_bigS(va_list l, flags_t *f)
 /**
  * print_rev - prints a string in reverse
  * @l: argument from _printf
- * @f: pointer to the struct flags that determines
+ * @f: pointer to the struct flags that determin
  * if a flag is passed to _printf
  * Return: length of the printed string
  */
@@ -100,4 +99,4 @@ int print_percent(va_list l, flags_t *f)
 	(void)l;
 	(void)f;
 	return (_putchar('%'));
-}u
+}
