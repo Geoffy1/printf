@@ -1,10 +1,10 @@
 #include "main.h"
 
 /**
- * _puts - this is a function that puts
- * @str: a parm to _puts function
- * print_string - printing a str
- * Return: 0
+ * _puts - prints a string, followed by a new line, to stdout
+ * @str: the string
+ *
+ * Return: number of characters printed
  */
 int _puts(char *str)
 {
@@ -18,12 +18,6 @@ int _puts(char *str)
 
 	return (i);
 }
-
-/**
- * print_string - printing a str
- * @args: parameter
- * Return: 0
- */
 int print_string(va_list args)
 {
 	return (_puts(va_arg(args, char *)));

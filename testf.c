@@ -1,33 +1,35 @@
 #include "main.h"
 
 /**
- * _printf - prints number of args
+ * print_all - prints numbers of args
  * @format: list of types of arg
+ * @number: number of args
  * Return: the number of character printed
  */
 int _printf(const char *format, ...)
 {
-	int number, i = 0;
+	int i = 0;
+	int counted = 0;
 	va_list args;
 
 	va_start(args, format);
 	while (format[i])
 	{
-		while (format[i] == '%')
+		if (format[i] == '%')
 		{
 			switch (format[i + 1])
 			{
 				case 'c':
-					number += print_char(args);
+					counted += print_char(args);
 					i += 2;
 					break;
 				case '%':
 					_putchar('%');
-					number++;
+					counted++;
 					i += 2;
 					break;
 				case 's':
-					number += print_string(args);
+					counted += print_string(args);
 					i += 2;
 					break;
 				default:
@@ -36,14 +38,16 @@ int _printf(const char *format, ...)
 					i += 2;
 			}
 		}
+
 		if (format[i])
 		{
 			_putchar(format[i]);
-			number++;
+			counted++;
 		}
+
 		i++;
 	}
 	va_end(args);
 
-	return (number);
+	return (counted);
 }
