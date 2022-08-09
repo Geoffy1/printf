@@ -36,6 +36,16 @@ typedef struct printHandler
 
 } ph;
 
+int get_precision(const char *format, int *i, va_list list);
+
+
+int get_size(const char *format, int *i);
+int is_printable(char c);
+int append_hexa_code(char ascii_code, char buffer[], int i);
+int get_precision(const char *format, int *i, va_list list);
+int get_width(const char *format, int *i, va_list list);i
+mk_buffer rot13_fmt(mk_buffer buffer, va_list args);
+
 /* print_number */
 int print_int(va_list l, flags_t *f);
 void print_number(int n);
@@ -76,5 +86,6 @@ int print_bigS(va_list l, flags_t *f);
 int print_address(va_list l, flags_t *f);
 /* priint_percent */
 int print_percent(va_list l, flags_t *f);
+
 
 #endif
