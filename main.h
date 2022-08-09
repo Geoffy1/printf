@@ -43,8 +43,7 @@ int get_size(const char *format, int *i);
 int is_printable(char c);
 int append_hexa_code(char ascii_code, char buffer[], int i);
 int get_precision(const char *format, int *i, va_list list);
-int get_width(const char *format, int *i, va_list list);i
-mk_buffer rot13_fmt(mk_buffer buffer, va_list args);
+int get_width(const char *format, int *i, va_list list);
 
 /* print_number */
 int print_int(va_list l, flags_t *f);
