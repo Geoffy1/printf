@@ -1,9 +1,11 @@
 #ifndef MAIN_H
 #define MAIN_H
+
 #include <stdio.h>
+#include <stdlib.h>
 #include <stdarg.h>
 #include <limits.h>
-#include <stddef.h>  
+#include <stddef.h>
 
 /**
  * struct flags - struct containing flags to "turn on"
@@ -36,15 +38,6 @@ typedef struct printHandler
 	int (*f)(va_list ap, flags_t *f);
 
 } ph;
-
-int get_precision(const char *format, int *i, va_list list);
-
-
-int get_size(const char *format, int *i);
-int is_printable(char c);
-int append_hexa_code(char ascii_code, char buffer[], int i);
-int get_precision(const char *format, int *i, va_list list);
-int get_width(const char *format, int *i, va_list list);
 
 /* print_number */
 int print_int(va_list l, flags_t *f);
